@@ -1,5 +1,7 @@
 package org.iesalandalus.programacion.reinaajedrez.modelo;
 
+import EjerciciosIntro.Posicion;
+
 public class Posicion {
 
 	private int fila;
@@ -12,6 +14,14 @@ public class Posicion {
 		setColumna(columna);
 	}
 
+	// Constructor copia
+	public Posicion(Posicion posicion) {
+		if (posicion == null) {
+			throw new NullPointerException("Objeto nulo");
+		}
+		fila = posicion.fila;
+		columna = posicion.columna;
+	}
 	//Método de acceso y modificación
 	public int getFila() {
 		return fila;
