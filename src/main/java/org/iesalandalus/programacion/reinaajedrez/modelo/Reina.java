@@ -1,6 +1,5 @@
 package org.iesalandalus.programacion.reinaajedrez.modelo;
 
-import EjerciciosIntro.Posicion;
 
 public class Reina {
 
@@ -11,13 +10,22 @@ public class Reina {
 	public Reina() {
 		 
 		color = Color.BLANCO;
-		Posicion posicion = new Posicion(1,'d');
+		posicion = new Posicion(1,'d');
 	}
-	
+	//Constructor por parámetros
+	public Reina(Color color) {
+		setColor(color);
+		if(color == Color.NEGRO) {
+			posicion = new Posicion (8, 'd');
+		}else {
+			posicion = new Posicion(1,'d');
+		}
+	}
 	//Métodos get y set
 	public Color getColor() {
 		return color;
 	}
+
 	private void setColor(Color color) {
 		if(color == null) {
 			throw new NullPointerException("No puede ser color nulo");
