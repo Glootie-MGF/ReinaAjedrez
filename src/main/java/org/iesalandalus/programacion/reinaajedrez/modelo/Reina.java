@@ -114,6 +114,12 @@ public class Reina {
 		}
 		this.posicion = new Posicion(posicion);
 	}
+
+	//Mostrar estado del objeto
+	@Override
+	public String toString() {
+		return String.format("Reina [color=%s, posicion=%s]", color, posicion);
+	}
 	
 	
 }
