@@ -43,4 +43,43 @@ public class Consola {
 		
 		return colorElegido;
 	}
+	public static void mostrarMenuDirecciones() {
+		System.out.println("-----MENU DIRECCIONES-----");
+		System.out.println("1- NORTE");
+		System.out.println("2- NORESTE");
+		System.out.println("3- ESTE");
+		System.out.println("4- SURESTE");
+		System.out.println("5- SUR");
+		System.out.println("6- SUROESTE");
+		System.out.println("7- OESTE");
+		System.out.println("8- NOROESTE");
+	}
+	public static Direccion elegirDireccion() {
+		int opcionDireccion;
+		Direccion direccionElegida = null;
+		do {
+			System.out.println("ELIGE UNA OPCIÓN:");
+			opcionDireccion = Entrada.entero();	
+		}while(opcionDireccion < 1 || opcionDireccion > 8);
+		
+		if (opcionDireccion==1) {
+			direccionElegida = Direccion.NORTE;
+		}else if (opcionDireccion==2) {
+			direccionElegida = Direccion.NORESTE;
+		}else if (opcionDireccion==3) {
+			direccionElegida = Direccion.ESTE;
+		}else if (opcionDireccion==4) {
+			direccionElegida = Direccion.SURESTE;
+		}else if (opcionDireccion==5) {
+			direccionElegida = Direccion.SUR;
+		}else if (opcionDireccion==6) {
+			direccionElegida = Direccion.SUROESTE;
+		}else if (opcionDireccion==7) {
+			direccionElegida = Direccion.OESTE;
+		}else if (opcionDireccion==8) {
+			direccionElegida = Direccion.NOROESTE;
+		}
+		
+		return direccionElegida;
+	}
 }
