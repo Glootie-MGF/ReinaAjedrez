@@ -82,4 +82,13 @@ public class Consola {
 		
 		return direccionElegida;
 	}
+	public static int elegirPasos() {
+		int pasos;
+		do {
+			System.out.println("ELIGE CUANTOS PASOS DAR:");
+			pasos = Entrada.entero();	
+		}while(pasos < 0);
+		
+		return pasos;
+	}
 }
