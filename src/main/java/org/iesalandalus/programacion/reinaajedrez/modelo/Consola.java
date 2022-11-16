@@ -91,4 +91,7 @@ public class Consola {
 		
 		return pasos;
 	}
+	public static void despedirse() {
+		System.out.println("Hasta luego, Lucas");
+	}
 }
