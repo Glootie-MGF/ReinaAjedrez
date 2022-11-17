@@ -7,70 +7,81 @@ public class Reina {
 	private Color color;
 	private Posicion posicion;
 	
-	//Método
+	//Método mover
 	public void mover(Direccion direccion, int pasos) throws OperationNotSupportedException {
 		if (direccion == null) {
-			throw new IllegalArgumentException("La dirección no puede ser nula.");
+			throw new NullPointerException("ERROR: La dirección no puede ser nula.");
 		}
 		if (pasos <= 0 || pasos > 7) {
-			throw new IllegalArgumentException("El número de pasos debe ser mayor que cero y menor que 7.");
+			throw new IllegalArgumentException("ERROR: El número de pasos debe estar comprendido entre 1 y 7.");
 		}
-		String movimientoNoValido = "Movimiento no válido: ";
+		
+		String movimientoNoValido = "ERROR: Movimiento no válido (se sale del tablero).";
+		Posicion posicionNueva;
+		
 		switch (direccion) {
 			case NORTE:
 				try {
-					Posicion posicionNueva = new Posicion(posicion.getFila() + pasos, posicion.getColumna());
+					posicionNueva = new Posicion((posicion.getFila() + pasos), posicion.getColumna());
+					setPosicion(posicionNueva);
 				} catch (IllegalArgumentException e) {
-					throw new OperationNotSupportedException(movimientoNoValido + e.getMessage());
+					throw new OperationNotSupportedException(movimientoNoValido);
 				}
 				break;
 			case NORESTE:
 				try {
-					Posicion posicionNueva = new Posicion(posicion.getFila() + pasos, (char)(posicion.getColumna() + pasos));
+					posicionNueva = new Posicion(posicion.getFila() + pasos, (char)(posicion.getColumna() + pasos));
+					setPosicion(posicionNueva);
 				} catch (IllegalArgumentException e) {
-					throw new OperationNotSupportedException(movimientoNoValido + e.getMessage());
+					throw new OperationNotSupportedException(movimientoNoValido);
 				}
 				break;
 			case ESTE:
 				try {
-					Posicion posicionNueva = new Posicion(posicion.getFila(), (char)(posicion.getColumna() + pasos));
+					posicionNueva = new Posicion(posicion.getFila(), (char)(posicion.getColumna() + pasos));
+					setPosicion(posicionNueva);
 				} catch (IllegalArgumentException e) {
-					throw new OperationNotSupportedException(movimientoNoValido + e.getMessage());
+					throw new OperationNotSupportedException(movimientoNoValido);
 				}
 				break;
 			case SURESTE:
 				try {
-					Posicion posicionNueva = new Posicion(posicion.getFila() - pasos, (char)(posicion.getColumna() + pasos));
+					posicionNueva = new Posicion(posicion.getFila() - pasos, (char)(posicion.getColumna() + pasos));
+					setPosicion(posicionNueva);
 				} catch (IllegalArgumentException e) {
-					throw new OperationNotSupportedException(movimientoNoValido + e.getMessage());
+					throw new OperationNotSupportedException(movimientoNoValido);
 				}
 				break;
 			case SUR:
 				try {
-					Posicion posicionNueva = new Posicion(posicion.getFila() - pasos, posicion.getColumna());
+					posicionNueva = new Posicion(posicion.getFila() - pasos, posicion.getColumna());
+					setPosicion(posicionNueva);
 				} catch (IllegalArgumentException e) {
-					throw new OperationNotSupportedException(movimientoNoValido + e.getMessage());
+					throw new OperationNotSupportedException(movimientoNoValido);
 				}
 				break;
 			case SUROESTE:
 				try {
-					Posicion posicionNueva = new Posicion(posicion.getFila() - pasos, (char)(posicion.getColumna() - pasos));
+					posicionNueva = new Posicion(posicion.getFila() - pasos, (char)(posicion.getColumna() - pasos));
+					setPosicion(posicionNueva);
 				} catch (IllegalArgumentException e) {
-					throw new OperationNotSupportedException(movimientoNoValido + e.getMessage());
+					throw new OperationNotSupportedException(movimientoNoValido);
 				}
 				break;
 			case OESTE:
 				try {
-					Posicion posicionNueva = new Posicion(posicion.getFila(), (char)(posicion.getColumna() - pasos));
+					posicionNueva = new Posicion(posicion.getFila(), (char)(posicion.getColumna() - pasos));
+					setPosicion(posicionNueva);
 				} catch (IllegalArgumentException e) {
-					throw new OperationNotSupportedException(movimientoNoValido + e.getMessage());
+					throw new OperationNotSupportedException(movimientoNoValido);
 				}
 				break;
 			case NOROESTE:
 				try {
-					Posicion posicionNueva = new Posicion(posicion.getFila() + pasos, (char)(posicion.getColumna() - pasos));
+					posicionNueva = new Posicion(posicion.getFila() + pasos, (char)(posicion.getColumna() - pasos));
+					setPosicion(posicionNueva);
 				} catch (IllegalArgumentException e) {
-					throw new OperationNotSupportedException(movimientoNoValido + e.getMessage());
+					throw new OperationNotSupportedException(movimientoNoValido);
 				}
 				break;
 			default:
@@ -89,7 +100,7 @@ public class Reina {
 		setColor(color);
 		if(color == Color.NEGRO) {
 			posicion = new Posicion (8, 'd');
-		}else {
+		}else if(color == Color.BLANCO) {
 			posicion = new Posicion(1,'d');
 		}
 	}
@@ -100,7 +111,7 @@ public class Reina {
 
 	private void setColor(Color color) {
 		if(color == null) {
-			throw new NullPointerException("No puede ser color nulo");
+			throw new NullPointerException("ERROR: El color no puede ser nulo.");
 		}
 		this.color = color;
 	}
@@ -110,7 +121,7 @@ public class Reina {
 	}
 	private void setPosicion(Posicion posicion) {
 		if(posicion == null) {
-			throw new NullPointerException("No puede ser posición nula");
+			throw new NullPointerException("ERROR: No puede ser posición nula");
 		}
 		this.posicion = new Posicion(posicion);
 	}
@@ -118,7 +129,7 @@ public class Reina {
 	//Mostrar estado del objeto
 	@Override
 	public String toString() {
-		return String.format("Reina [color=%s, posicion=%s]", color, posicion);
+		return String.format("color=%s, posicion=(%s)", color, posicion);
 	}
 	
 	

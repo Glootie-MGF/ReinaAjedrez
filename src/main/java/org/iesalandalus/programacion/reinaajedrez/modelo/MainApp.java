@@ -31,7 +31,7 @@ public class MainApp {
 	}
 	private static void mostrarReina() {
 		if(reina!=null) {
-			reina.toString();
+			System.out.println(reina);
 		}else {
 			System.out.println("NO SE HA CREADO NINGUNA REINA AÚN");
 		}
@@ -63,14 +63,14 @@ public class MainApp {
 		do {
 			Consola.mostrarMenu();
 			opcion = Consola.elegirOpcionMenu();
+			ejecutarOpcion(opcion);
+
 			if (opcion != 4) {
 				mostrarReina();
 			}
-			ejecutarOpcion(opcion);
 			
 		} while (opcion != 4);
 
-		Consola.despedirse();
 	}
 
 	}
